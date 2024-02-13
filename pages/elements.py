@@ -1,0 +1,81 @@
+class MainPage:
+    CURRENCY_TAB = "#form-currency"
+    CURRENCY_EUR = "a.dropdown-item[href='EUR']"
+    SEARCH_INPUT = "#search"
+    SEARCH_BUTTON = "button.btn-light"
+    SHOPPING_CART_BUTTON = "button.dropdown-toggle"
+    MENU_BAR = "#menu"
+    PRICE = "span.price-new"
+    PRICE_TAX = "span.price-tax"
+    PRICE_OLD = "span.price-old"
+    CAROUSEL_BANNER = "#carousel-banner-0"
+    ADD_TO_CART_BUTTON = "button[formaction$='/cart.add']"
+    IPHONE_IMG = "img[title='iPhone']"
+
+
+class CatalogPage:
+    LIST_GROUP_ITEM_DESKTOPS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/desktops']"
+    LIST_GROUP_ITEM_LAPTOPS_NOTEBOOKS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/laptop-notebook']"
+    LIST_GROUP_ITEM_COMPONENTS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/component']"
+    LIST_GROUP_ITEM_TABLETS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/tablet']"
+    LIST_GROUP_ITEM_SOFTWARE = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/software']"
+    LIST_GROUP_ITEM_PHONES_PDA = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/smartphone']"
+    LIST_GROUP_ITEM_CAMERAS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/cameras']"
+    LIST_GROUP_ITEM_MP3_PLAYERS = "a.list-group-item[href='http://172.22.144.70:8081/en-gb/catalog/mp3-players']"
+    COMPARE_BUTTON = "#compare-total"
+    LIST_VIEW_BUTTON = "#button-list"
+    GRID_VIEW_BUTTON = "#button-grid"
+    SELECT_SORT = "#input-sort"
+    SELECT_SHOW_LIMIT = "#input-limit"
+    REFINE_SEARCH_MACS = "div.col-sm-3 a[href*='/laptop-notebook/macs']"
+    REFINE_SEARCH_WINDOWS = "div.col-sm-3 a[href*='/laptop-notebook/windows']"
+    PRICE = "span.price-new"
+    PRICE_TAX = "span.price-tax"
+    PRICE_OLD = "span.price-old"
+    CURRENCY_TAB = "#form-currency"
+    CURRENCY_EUR = "a.dropdown-item[href='EUR']"
+
+
+class LoginAdminPage:
+    USERNAME = "user"
+    PASSWORD = "bitnami"
+    USERNAME_INPUT = "#input-username"
+    PASSWORD_INPUT = "#input-password"
+    SUBMIT_BUTTON = "button[type='submit']"
+    OPENCART_LINK = "footer > a[href='https://www.opencart.com']"
+    IMG_LOGO = "img[title='OpenCart']"
+
+
+class ProductCardPage:
+    MAIN_PRODUCT_IMG = "img.img-thumbnail.mb-3"
+    PRICE = "ul.list-unstyled  span.price-new"
+    WISH_LIST_BUTTON = "button.btn.btn-light[formaction$='/wishlist.add']"
+    INPUT_QUANTITY = "#input-quantity"
+    TAB_REVIEW = "a.nav-link[href='#tab-review']"
+    TAB_DESCRIPTION = "a.nav-link[href='#tab-description']"
+    DESCRIPTION = "#tab-description[role='tabpanel']"
+    RELATED_PRODUCT = ".product-thumb"
+
+
+class UserRegistrationPage:
+    LOGIN_PAGE_LINK = "//*[text()='login page']"  # xpath
+    FIRST_NAME_INPUT = "#input-firstname"
+    LAST_NAME_INPUT = "#input-lastname"
+    E_MAIL_INPUT = "#input-email"
+    PASSWORD_INPUT = "#input-password"
+    NEWSLETTER_CHECKBOX = "#input-newsletter"
+    PRIVACY_POLICY_LINK = "input[name='agree']"
+    CONTINUE_BUTTON = "//button[text()='Continue']"  # xpath
+    LIST_GROUP_ITEM_LOGIN = "a.list-group-item[href*='/login']"
+    LIST_GROUP_ITEM_REGISTER = "a.list-group-item[href*='/register']"
+    LIST_GROUP_ITEM_FORGOTTEN_PASSWORD = "a.list-group-item[href*='/forgotten']"
+    LIST_GROUP_ITEM_MY_ACCOUNT = "a.list-group-item[href*='/account']"
+    LIST_GROUP_ITEM_ADDRESS_BOOK = "a.list-group-item[href*='/address']"
+    LIST_GROUP_ITEM_WISHLIST = "a.list-group-item[href*='/wishlist']"
+    LIST_GROUP_ITEM_ORDER = "a.list-group-item[href*='/order']"
+    LIST_GROUP_ITEM_DOWNLOAD = "a.list-group-item[href*='/download']"
+    LIST_GROUP_ITEM_SUBSCRIPTION = "a.list-group-item[href*='/subscription']"
+    LIST_GROUP_ITEM_REWARD = "a.list-group-item[href*='/reward']"
+    LIST_GROUP_ITEM_RETURNS = "a.list-group-item[href*='/returns']"
+    LIST_GROUP_ITEM_TRANSACTION = "a.list-group-item[href*='/transaction']"
+    LIST_GROUP_ITEM_NEWSLETTER = "a.list-group-item[href*='/newsletter']"

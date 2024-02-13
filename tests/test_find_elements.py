@@ -1,0 +1,83 @@
+from selenium.webdriver.common.by import By
+from Tools.expectations import Expectations
+from pages import *
+
+
+class TestFindElements:
+    def test_main_page(self, browser):
+        browser.get(f"{browser.url}/home")
+        exp = Expectations(browser)
+        exp.wait_title("Your Store")
+        exp.search_element(MainPage.SEARCH_INPUT)
+        exp.search_element(MainPage.SEARCH_BUTTON)
+        exp.search_element(MainPage.SHOPPING_CART_BUTTON)
+        exp.search_element(MainPage.MENU_BAR)
+        exp.search_element(MainPage.CAROUSEL_BANNER)
+        exp.search_element(MainPage.IPHONE_IMG)
+
+    def test_laptops_catalog_page(self, browser):
+        browser.get(f"{browser.url}/en-gb/catalog/desktops")
+        exp = Expectations(browser)
+        exp.wait_title("Desktops")
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_DESKTOPS)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_LAPTOPS_NOTEBOOKS)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_COMPONENTS)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_TABLETS)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_SOFTWARE)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_PHONES_PDA)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_CAMERAS)
+        exp.search_element(CatalogPage.LIST_GROUP_ITEM_MP3_PLAYERS)
+        exp.search_element(CatalogPage.COMPARE_BUTTON)
+        exp.search_element(CatalogPage.LIST_VIEW_BUTTON)
+        exp.search_element(CatalogPage.GRID_VIEW_BUTTON)
+        exp.search_element(CatalogPage.SELECT_SORT)
+        exp.search_element(CatalogPage.SELECT_SHOW_LIMIT)
+        exp.search_element(CatalogPage.REFINE_SEARCH_MACS)
+        exp.search_element(CatalogPage.REFINE_SEARCH_WINDOWS)
+
+    def test_product_card_page(self, browser):
+        browser.get(f"{browser.url}/en-gb/product/smartphone/iphone")
+        exp = Expectations(browser)
+        exp.wait_title("iPhone")
+        exp.search_element(ProductCardPage.MAIN_PRODUCT_IMG)
+        exp.search_element(ProductCardPage.PRICE)
+        exp.search_element(ProductCardPage.WISH_LIST_BUTTON)
+        exp.search_element(ProductCardPage.INPUT_QUANTITY)
+        exp.search_element(ProductCardPage.TAB_REVIEW)
+        exp.search_element(ProductCardPage.DESCRIPTION)
+        exp.search_element(ProductCardPage.RELATED_PRODUCT)
+
+    def test_login_admin_page(self, browser):
+        browser.get(f"{browser.url}/administration")
+        exp = Expectations(browser)
+        exp.wait_title("Administration")
+        exp.search_element(LoginAdminPage.USERNAME_INPUT)
+        exp.search_element(LoginAdminPage.PASSWORD_INPUT)
+        exp.search_element(LoginAdminPage.SUBMIT_BUTTON)
+        exp.search_element(LoginAdminPage.OPENCART_LINK)
+        exp.search_element(LoginAdminPage.IMG_LOGO)
+
+    def test_user_registration_page(self, browser):
+        browser.get(f"{browser.url}/en-gb?route=account/register")
+        exp = Expectations(browser)
+        exp.wait_title("Register Account")
+        exp.search_element(UserRegistrationPage.LOGIN_PAGE_LINK, by=By.XPATH)
+        exp.search_element(UserRegistrationPage.FIRST_NAME_INPUT)
+        exp.search_element(UserRegistrationPage.E_MAIL_INPUT)
+        exp.search_element(UserRegistrationPage.PASSWORD_INPUT)
+        exp.search_element(UserRegistrationPage.NEWSLETTER_CHECKBOX)
+        exp.search_element(UserRegistrationPage.PRIVACY_POLICY_LINK)
+        exp.search_element(UserRegistrationPage.CONTINUE_BUTTON, by=By.XPATH)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_LOGIN)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_REGISTER)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_FORGOTTEN_PASSWORD)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_MY_ACCOUNT)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_ADDRESS_BOOK)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_WISHLIST)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_ORDER)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_DOWNLOAD)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_SUBSCRIPTION)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_REWARD)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_RETURNS)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_TRANSACTION)
+        exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_NEWSLETTER)
