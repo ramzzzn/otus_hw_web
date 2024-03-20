@@ -32,8 +32,8 @@ class TestFindElements:
         exp.search_element(CatalogPage.GRID_VIEW_BUTTON)
         exp.search_element(CatalogPage.SELECT_SORT)
         exp.search_element(CatalogPage.SELECT_SHOW_LIMIT)
-        exp.search_element(CatalogPage.REFINE_SEARCH_MACS)
-        exp.search_element(CatalogPage.REFINE_SEARCH_WINDOWS)
+        exp.search_element(CatalogPage.REFINE_SEARCH_MAC)
+        exp.search_element(CatalogPage.REFINE_SEARCH_PC)
 
     def test_product_card_page(self, browser):
         browser.get(f"{browser.url}/en-gb/product/smartphone/iphone")
