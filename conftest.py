@@ -14,7 +14,7 @@ from selenium.webdriver.safari.service import Service as SafariService
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
     parser.addoption("--base_url", action="store", default="http://172.22.144.70:8081")
-    parser.addoption("--headless", action="store_true")
+    parser.addoption("--headless", action="store_true", default=False)
     parser.addoption("--ya_driver", default="C:/otus_homeworks/homework_web/drivers/yandexdriver.exe")
 
 
