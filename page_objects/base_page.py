@@ -25,19 +25,18 @@ class BasePage:
             return WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
         except TimeoutException:
             # self.driver.save_screenshot("{}.png".format(self.driver.session_id))
-            raise AssertionError(f"Не дождался видимости элемента: {locator}")
+            raise TimeoutException(f"Не дождался видимости элемента: {locator}")
 
     def search_elements(self, locator: tuple, timeout=1):
         try:
             return WebDriverWait(self.browser, timeout).until(EC.visibility_of_all_elements_located(locator))
         except TimeoutException:
-            raise AssertionError(f"Не найден ни один элемент по указанному селектору: {locator}")
+            raise TimeoutException(f"Не найден ни один элемент по указанному селектору: {locator}")
 
-    def click_action(self, locator: tuple):
+    def click_action(self, locator: tuple, timeout: int = 1):
         ActionChains(self.browser)\
-            .pause(1)\
-            .move_to_element(self.search_element(locator))\
-            .pause(0.3).click()\
+            .move_to_element(self.search_element(locator, timeout))\
+            .pause(1).click()\
             .perform()
 
     def input(self, locator: tuple, text: str):

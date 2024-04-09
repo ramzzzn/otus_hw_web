@@ -4,3 +4,7 @@ from .login_admin_page import *
 from .product_card_page import *
 from .user_registration_page import *
 from .cart_page import *
+from .admin_page import *
+from .admin_product_page import *
+from .admin_add_product_page import *
+from .user_login_page import *

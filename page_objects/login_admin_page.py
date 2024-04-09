@@ -12,10 +12,10 @@ class LoginAdminPage(BasePage):
     ADMIN_PROFILE = By.CSS_SELECTOR, "#nav-profile"
     ADMIN_LOGOUT = By.CSS_SELECTOR, "#nav-logout"
 
-
     def open_login_admin_page(self):
         self.open_page('/administration')
         self.wait_title("Administration")
+        return self
 
     def log_in_admin(self, username: str, password: str):
         # логинимся в админку
@@ -24,12 +24,5 @@ class LoginAdminPage(BasePage):
         self.click_action(self.SUBMIT_BUTTON)
         # проверка, что логин был выполнен
         self.wait_title("Dashboard")
-        self.search_element(self.ADMIN_PROFILE)
-
-    def log_out_admin(self):
-        # разлогин из админки
-        self.click_action(self.ADMIN_LOGOUT)
-        # проверка, что разлогин был выполнен
-        self.wait_title("Administration")
-        self.search_element(self.USERNAME_INPUT)
-
+        self.search_element((By.CSS_SELECTOR, "#nav-profile"))
+        return self

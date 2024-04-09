@@ -24,7 +24,3 @@ class CatalogPage(BasePage):
     PRICE_OLD = By.CSS_SELECTOR, "span.price-old"
     CURRENCY_TAB = By.CSS_SELECTOR, "#form-currency"
     CURRENCY_EUR = By.CSS_SELECTOR, "a.dropdown-item[href='EUR']"
-
-    def open_catalog_page(self):
-        self.open_page(f"/en-gb/catalog/desktops")
-        self.wait_title("Desktops")

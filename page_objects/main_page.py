@@ -4,27 +4,39 @@ from page_objects.base_page import BasePage
 
 
 class MainPage(BasePage):
-    CURRENCY_TAB = By.CSS_SELECTOR, "#form-currency"
-    CURRENCY_USD = By.CSS_SELECTOR, "a.dropdown-item[href='USD']"
-    CURRENCY_EUR = By.CSS_SELECTOR, "a.dropdown-item[href='EUR']"
-    CURRENCY_GBP = By.CSS_SELECTOR, "a.dropdown-item[href='GBP']"
-    SEARCH_INPUT = By.CSS_SELECTOR, "#search"
-    SEARCH_BUTTON = By.CSS_SELECTOR, "button.btn-light"
-    SHOPPING_CART_BUTTON = By.CSS_SELECTOR, "button.dropdown-toggle"
-    MENU_BAR = By.CSS_SELECTOR, "#menu"
-    PRICE = By.CSS_SELECTOR, "span.price-new"
-    PRICE_TAX = By.CSS_SELECTOR, "span.price-tax"
-    PRICE_OLD = By.CSS_SELECTOR, "span.price-old"
+    INPUT_SEARCH = By.CSS_SELECTOR, "#search"
+    BUTTON_SEARCH = By.CSS_SELECTOR, "button.btn-light"
+    BUTTON_SHOPPING_CART = By.CSS_SELECTOR, "button.dropdown-toggle"
+    BUTTON_ADD_TO_CART = By.CSS_SELECTOR, "i.fa-shopping-cart"
     CAROUSEL_BANNER = By.CSS_SELECTOR, "#carousel-banner-0"
-    ADD_TO_CART_BUTTON = By.CSS_SELECTOR, "i.fa-shopping-cart"
-    IPHONE_IMG = By.CSS_SELECTOR, "img[title='iPhone']"
+    MENU_DESKTOP = By.XPATH, "//a[text()='Desktops']"
+    MENU_DESKTOP_SHOW_ALL = By.XPATH, "//a[text()='Show All Desktops']"
+    MENU_MY_ACCOUNT = By.XPATH, "//span[text()='My Account']"
+    MENU_MY_ACCOUNT_REGISTER = By.XPATH, "//a[text()='Register']"
+    MENU_MY_ACCOUNT_LOGIN = By.XPATH, "//a[text()='Login']"
+    IMG_IPHONE = By.CSS_SELECTOR, "img[title='iPhone']"
 
     def open_main_page(self):
         self.open_page('/home')
         self.wait_title("Your Store")
 
+    def open_desktops_catalog_page(self):
+        self.click_action(self.MENU_DESKTOP)
+        self.click_action(self.MENU_DESKTOP_SHOW_ALL)
+        self.wait_title("Desktops")
+
+    def open_user_registration_page(self):
+        self.click_action(self.MENU_MY_ACCOUNT)
+        self.click_action(self.MENU_MY_ACCOUNT_REGISTER)
+        self.wait_title("Register Account")
+
+    def open_user_login_page(self):
+        self.click_action(self.MENU_MY_ACCOUNT)
+        self.click_action(self.MENU_MY_ACCOUNT_LOGIN)
+        self.wait_title("Account Login")
+
     def add_product_to_cart(self, index: int = 0):
         if index == 0:
-            self.click_action(self.ADD_TO_CART_BUTTON)
+            self.click_action(self.BUTTON_ADD_TO_CART)
         else:
-            self.search_element(self.ADD_TO_CART_BUTTON)[index].click()
+            self.search_element(self.BUTTON_ADD_TO_CART)[index].click()
