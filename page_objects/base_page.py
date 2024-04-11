@@ -35,8 +35,8 @@ class BasePage:
 
     def click_action(self, locator: tuple, timeout: int = 1):
         ActionChains(self.browser)\
-            .move_to_element(self.search_element(locator, timeout))\
-            .pause(1).click()\
+            .pause(0.5).move_to_element(self.search_element(locator, timeout))\
+            .pause(0.5).click()\
             .perform()
 
     def input(self, locator: tuple, text: str):
