@@ -1,24 +1,20 @@
 from selenium.webdriver.common.by import By
-from Tools.expectations import Expectations
-from pages import *
+from page_objects import *
 
 
 class TestFindElements:
     def test_main_page(self, browser):
-        browser.get(f"{browser.url}/home")
-        exp = Expectations(browser)
-        exp.wait_title("Your Store")
-        exp.search_element(MainPage.SEARCH_INPUT)
-        exp.search_element(MainPage.SEARCH_BUTTON)
-        exp.search_element(MainPage.SHOPPING_CART_BUTTON)
-        exp.search_element(MainPage.MENU_BAR)
-        exp.search_element(MainPage.CAROUSEL_BANNER)
-        exp.search_element(MainPage.IPHONE_IMG)
+        exp = MainPage(browser)
+        exp.open_main_page()
+        exp.search_element(exp.INPUT_SEARCH)
+        exp.search_element(exp.BUTTON_SEARCH)
+        exp.search_element(exp.BUTTON_SHOPPING_CART)
+        exp.search_element(exp.CAROUSEL_BANNER)
+        exp.search_element(exp.IMG_IPHONE)
 
     def test_laptops_catalog_page(self, browser):
-        browser.get(f"{browser.url}/en-gb/catalog/desktops")
-        exp = Expectations(browser)
-        exp.wait_title("Desktops")
+        exp = CatalogPage(browser)
+        exp.open_catalog_page()
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_DESKTOPS)
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_LAPTOPS_NOTEBOOKS)
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_COMPONENTS)
@@ -36,9 +32,8 @@ class TestFindElements:
         exp.search_element(CatalogPage.REFINE_SEARCH_PC)
 
     def test_product_card_page(self, browser):
-        browser.get(f"{browser.url}/en-gb/product/smartphone/iphone")
-        exp = Expectations(browser)
-        exp.wait_title("iPhone")
+        exp = ProductCardPage(browser)
+        exp.open_product_card_page()
         exp.search_element(ProductCardPage.MAIN_PRODUCT_IMG)
         exp.search_element(ProductCardPage.PRICE)
         exp.search_element(ProductCardPage.WISH_LIST_BUTTON)
@@ -48,9 +43,8 @@ class TestFindElements:
         exp.search_element(ProductCardPage.RELATED_PRODUCT)
 
     def test_login_admin_page(self, browser):
-        browser.get(f"{browser.url}/administration")
-        exp = Expectations(browser)
-        exp.wait_title("Administration")
+        exp = LoginAdminPage(browser)
+        exp.open_login_admin_page()
         exp.search_element(LoginAdminPage.USERNAME_INPUT)
         exp.search_element(LoginAdminPage.PASSWORD_INPUT)
         exp.search_element(LoginAdminPage.SUBMIT_BUTTON)
@@ -58,16 +52,15 @@ class TestFindElements:
         exp.search_element(LoginAdminPage.IMG_LOGO)
 
     def test_user_registration_page(self, browser):
-        browser.get(f"{browser.url}/en-gb?route=account/register")
-        exp = Expectations(browser)
-        exp.wait_title("Register Account")
-        exp.search_element(UserRegistrationPage.LOGIN_PAGE_LINK, by=By.XPATH)
-        exp.search_element(UserRegistrationPage.FIRST_NAME_INPUT)
-        exp.search_element(UserRegistrationPage.E_MAIL_INPUT)
-        exp.search_element(UserRegistrationPage.PASSWORD_INPUT)
-        exp.search_element(UserRegistrationPage.NEWSLETTER_CHECKBOX)
-        exp.search_element(UserRegistrationPage.PRIVACY_POLICY_LINK)
-        exp.search_element(UserRegistrationPage.CONTINUE_BUTTON, by=By.XPATH)
+        exp = UserRegistrationPage(browser)
+        exp.open_user_registration_page()
+        exp.search_element(UserRegistrationPage.LOGIN_PAGE_LINK)
+        exp.search_element(UserRegistrationPage.INPUT_FIRST_NAME)
+        exp.search_element(UserRegistrationPage.INPUT_EMAIL)
+        exp.search_element(UserRegistrationPage.INPUT_PASSWORD)
+        exp.search_element(UserRegistrationPage.CHECKBOX_NEWSLETTER)
+        exp.search_element(UserRegistrationPage.CHECKBOX_PRIVACY_POLICY)
+        exp.search_element(UserRegistrationPage.BUTTON_CONTINUE)
         exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_LOGIN)
         exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_REGISTER)
         exp.search_element(UserRegistrationPage.LIST_GROUP_ITEM_FORGOTTEN_PASSWORD)
