@@ -13,11 +13,13 @@ class LoginAdminPage(BasePage):
     ADMIN_LOGOUT = By.CSS_SELECTOR, "#nav-logout"
 
     def open_login_admin_page(self):
+        self.logger.info("Login as admin")
         self.open_page('/administration')
         self.wait_title("Administration")
         return self
 
     def log_in_admin(self, username: str, password: str):
+        self.logger.info("Login to the admin panel")
         # логинимся в админку
         self.input(self.USERNAME_INPUT, username)
         self.input(self.PASSWORD_INPUT, password)

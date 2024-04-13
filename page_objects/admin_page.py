@@ -10,6 +10,7 @@ class AdminPage(BasePage):
     MENU_PRODUCTS = By.XPATH, "//*[text()='Products']"
 
     def log_out(self):
+        self.logger.info("Logout admin panel")
         # разлогин из админки
         self.click_action(self.ADMIN_LOGOUT)
         # проверка, что разлогин был выполнен
@@ -17,5 +18,6 @@ class AdminPage(BasePage):
         self.search_element((By.CSS_SELECTOR, "#input-username"))
 
     def open_admin_product_page(self):
+        self.logger.info("Open => Product settings admin page")
         self.click_action(self.MENU_CATALOG)
         self.click_action(self.MENU_PRODUCTS)

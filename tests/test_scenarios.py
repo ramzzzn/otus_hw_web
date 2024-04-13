@@ -22,12 +22,12 @@ class TestScenarios:
         AdminPage(browser).open_admin_product_page()
         # добавляем новый товар
         product_page = AdminProductPage(browser)
-        product_page.open_admin_add_product_page()
+        product_page.open_product_add_page()
         test_product = generate_test_data_for_product()
         AdminAddProductPage(browser).add_new_product(**test_product)
         # проверяем что товар создан
         product_page.filter_by_product_name(product_name=test_product['product_name'])
-        product_page.get_product_name_from_product_list(product_name=test_product['product_name'])
+        product_page.check_product_name_in_product_list(product_name=test_product['product_name'])
         product_page.get_model_name_from_product_list(model_name=test_product['model_name'])
         # удаляем созданный товар
         product_page.delete_product(product_name=test_product['product_name'])
@@ -35,14 +35,15 @@ class TestScenarios:
         # разлогин из админки
         AdminPage(browser).log_out()
 
-    def test_add_to_cart(self, browser):
+    @pytest.mark.parametrize("product_name", ['MacBook', 'iPhone'])
+    def test_add_to_cart(self, browser, product_name):
         # заходим на главную страницу
         MainPage(browser).open_main_page()
         # добавляем товар в корзину
-        MainPage(browser).add_product_to_cart()
+        MainPage(browser).add_to_cart_by_product_name(product_name)
         # проверяем, что товар добавлен в корзину
         AlertElement(browser).shopping_cart.click()
-        CartPage(browser).get_product_name(product_name='MacBook')
+        CartPage(browser).get_product_name(product_name)
 
     def test_change_currency_main_page(self, browser):
         # заходим на главную страницу

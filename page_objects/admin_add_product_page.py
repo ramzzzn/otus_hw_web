@@ -15,7 +15,7 @@ class AdminAddProductPage(BasePage):
     INPUT_META_TAG_TITLE = By.CSS_SELECTOR, "#input-meta-title-1"
 
     def _save_product(self):
-        self.click_action(self.BUTTON_SAVE, timeout=3)
+        self.click_action(self.BUTTON_SAVE)
         self.click_action(self.BUTTON_BACK)
 
     def _set_general_properties(self, product_name: str, meta_tag_title: str):
@@ -32,6 +32,7 @@ class AdminAddProductPage(BasePage):
         self.input(self.INPUT_KEYWORD, keyword)
 
     def add_new_product(self, product_name: str, meta_tag_title: str, model_name: str, keyword: str):
+        self.logger.info("Adding new product")
         self._set_general_properties(product_name, meta_tag_title)
         self._set_data_properties(model_name)
         self._set_seo_properties(keyword)

@@ -9,6 +9,7 @@ class UserLoginPage(BasePage):
     BUTTON_LOGIN = By.XPATH, "//button[text()='Login']"
 
     def login_user(self, email: str, password: str):
+        self.logger.info("Login as user")
         self.input(self.INPUT_EMAIL, email)
         self.input(self.INPUT_PASSWORD, password)
         self.click_action(self.BUTTON_LOGIN)

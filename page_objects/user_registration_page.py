@@ -28,6 +28,7 @@ class UserRegistrationPage(BasePage):
     LIST_GROUP_ITEM_LOGOUT = By.XPATH, "//div/a[text()='Logout']"
 
     def register_user(self, first_name: str, last_name: str, email: str, password: str):
+        self.logger.info("Registering a new user")
         self.input(self.INPUT_FIRST_NAME, first_name)
         self.input(self.INPUT_LAST_NAME, last_name)
         self.input(self.INPUT_EMAIL, email)
@@ -37,6 +38,7 @@ class UserRegistrationPage(BasePage):
         self.wait_title("Your Account Has Been Created!")
 
     def user_logout(self):
+        self.logger.info("Logout a user")
         self.click_action(self.LIST_GROUP_ITEM_LOGOUT)
         self.click_action(self.BUTTON_CONTINUE)
         self.wait_title("Your Store")

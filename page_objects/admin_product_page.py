@@ -14,10 +14,12 @@ class AdminProductPage(BasePage):
     def _td_text_xpath(self, text: str):
         return f"//td[contains(text(), '{text}')]"
 
-    def open_admin_add_product_page(self):
+    def open_product_add_page(self):
+        self.logger.info("Open => Product add page")
         self.click_action(self.BUTTON_ADD_NEW_PRODUCT)
 
     def filter_by_product_name(self, product_name: str):
+        self.logger.info("Filter products by product name")
         self.input(self.INPUT_PRODUCT_NAME, product_name)
         self.click_action(self.BUTTON_FILTER)
 
@@ -28,7 +30,8 @@ class AdminProductPage(BasePage):
             except StaleElementReferenceException:
                 continue
 
-    def get_product_name_from_product_list(self, product_name):
+    def check_product_name_in_product_list(self, product_name):
+        self.logger.info("Checking product in product list")
         result = self._get_parameter_from_product_list(value=product_name)
         if result:
             return result.split()[0]
@@ -36,6 +39,7 @@ class AdminProductPage(BasePage):
             return None
 
     def get_model_name_from_product_list(self, model_name):
+        self.logger.info("Checking model in product list")
         return self._get_parameter_from_product_list(value=model_name)
 
     def _select_product_by_product_name(self, product_name: str):
@@ -43,11 +47,14 @@ class AdminProductPage(BasePage):
                                    "/preceding-sibling::td/input[@type='checkbox']"))
 
     def delete_product(self, product_name: str):
+        self.logger.info("Deleting product")
         self._select_product_by_product_name(product_name)
         self.click_action(self.BUTTON_DELETE_PRODUCT)
         confirm_delete = self.browser.switch_to.alert
         confirm_delete.accept()
 
     def check_if_product_deleted(self, product_name: str):
+        self.logger.info("Checking if product deleted")
         self.filter_by_product_name(product_name)
         self.search_element(locator=(By.XPATH, self._td_text_xpath(text='No results!')))
+        self.logger.info("Product was succesfully deleted")
