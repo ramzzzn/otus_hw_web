@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -28,6 +29,11 @@ class BasePage:
         try:
             self.wait.until(EC.title_is(title))
         except TimeoutException:
+            allure.attach(
+                body=self.browser.get_screenshot_as_png(),
+                name="screenshot_image",
+                attachment_type=allure.attachment_type.PNG
+            )
             error_message = f"Expected title: '{title}', but was '{self.browser.title}'"
             self.logger.exception("%s: %s" % (self.class_name, error_message))
             raise TimeoutException(error_message)
@@ -37,7 +43,11 @@ class BasePage:
         try:
             return self.wait.until(EC.visibility_of_element_located(locator))
         except TimeoutException:
-            # self.driver.save_screenshot("{}.png".format(self.driver.session_id))
+            allure.attach(
+                body=self.browser.get_screenshot_as_png(),
+                name="screenshot_image",
+                attachment_type=allure.attachment_type.PNG
+            )
             error_message = f"Element was not found by the specified selector: {locator}"
             self.logger.exception("%s: %s" % (self.class_name, error_message))
             raise TimeoutException(error_message)
@@ -47,7 +57,11 @@ class BasePage:
         try:
             return self.wait.until(EC.element_to_be_clickable(locator))
         except TimeoutException:
-            # self.driver.save_screenshot("{}.png".format(self.driver.session_id))
+            allure.attach(
+                body=self.browser.get_screenshot_as_png(),
+                name="screenshot_image",
+                attachment_type=allure.attachment_type.PNG
+            )
             error_message = f"Element was not found by the specified selector: {locator}"
             self.logger.exception("%s: %s" % (self.class_name, error_message))
             raise TimeoutException(error_message)
@@ -57,6 +71,11 @@ class BasePage:
         try:
             return self.wait.until(EC.visibility_of_all_elements_located(locator))
         except TimeoutException:
+            allure.attach(
+                body=self.browser.get_screenshot_as_png(),
+                name="screenshot_image",
+                attachment_type=allure.attachment_type.PNG
+            )
             error_message = f"No element was found for the specified selector: {locator}"
             self.logger.exception("%s: %s" % (self.class_name, error_message))
             raise TimeoutException(error_message)
