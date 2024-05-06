@@ -18,7 +18,7 @@ def pytest_addoption(parser):
     parser.addoption("--base_url", action="store", default="http://172.22.144.70:8081")
     parser.addoption("--headless", action="store_true", default=False)
     parser.addoption("--ya_driver", default="C:/otus_homeworks/homework_web/drivers/yandexdriver.exe")
-    parser.addoption("--log_level", action="store", default="DEBUG")
+    parser.addoption("--log_level", action="store", default="INFO")
 
 
 def setup_logger(name: str, log_level: str) -> logging.Logger:

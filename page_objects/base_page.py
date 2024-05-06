@@ -1,5 +1,3 @@
-import logging
-
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -44,6 +42,16 @@ class BasePage:
             self.logger.exception("%s: %s" % (self.class_name, error_message))
             raise TimeoutException(error_message)
 
+    def search_clickable_element(self, locator: tuple):
+        # self.logger.debug("%s: Searching element %s" % (self.class_name, locator))
+        try:
+            return self.wait.until(EC.element_to_be_clickable(locator))
+        except TimeoutException:
+            # self.driver.save_screenshot("{}.png".format(self.driver.session_id))
+            error_message = f"Element was not found by the specified selector: {locator}"
+            self.logger.exception("%s: %s" % (self.class_name, error_message))
+            raise TimeoutException(error_message)
+
     def search_elements(self, locator: tuple):
         # self.logger.debug("%s: Searching elements %s" % (self.class_name, locator))
         try:
@@ -62,8 +70,8 @@ class BasePage:
 
     def input(self, locator: tuple, text: str):
         self.logger.debug("%s: Input %s in element %s" % (self.class_name, text, locator))
-        self.search_element(locator).click()
-        self.search_element(locator).clear()
+        self.search_clickable_element(locator).click()
+        self.search_clickable_element(locator).clear()
         for letter in text:
             self.search_element(locator).send_keys(letter)
         return self

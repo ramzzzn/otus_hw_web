@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from page_objects.base_page import BasePage
@@ -12,12 +13,14 @@ class LoginAdminPage(BasePage):
     ADMIN_PROFILE = By.CSS_SELECTOR, "#nav-profile"
     ADMIN_LOGOUT = By.CSS_SELECTOR, "#nav-logout"
 
+    @allure.step("Открываю страницу авторизации в раздел администратора")
     def open_login_admin_page(self):
         self.logger.info("Login as admin")
         self.open_page('/administration')
         self.wait_title("Administration")
         return self
 
+    @allure.step("Авторизуюсь в раздел администратора")
     def log_in_admin(self, username: str, password: str):
         self.logger.info("Login to the admin panel")
         # логинимся в админку
