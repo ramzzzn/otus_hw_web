@@ -29,8 +29,11 @@ def pytest_addoption(parser):
 
 def setup_logger(name: str, log_level: str) -> logging.Logger:
     # создаем папку logs, если её нет
-    if not os.path.exists("logs"):
-        os.makedirs("logs")
+    try:
+        if not os.path.exists("logs"):
+            os.makedirs("logs")
+    except FileExistsError:
+        pass
     logger = logging.getLogger(name)
     # задаем путь, где будут храниться логи
     file_handler = logging.FileHandler(f"logs/{name}.log")
