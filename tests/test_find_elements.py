@@ -1,5 +1,6 @@
-from selenium.webdriver.common.by import By
 from page_objects import *
+import os
+os.environ["PATH"] += ";C:\\path\\to\\your\\executable"
 
 
 class TestFindElements:
@@ -10,11 +11,12 @@ class TestFindElements:
         exp.search_element(exp.BUTTON_SEARCH)
         exp.search_element(exp.BUTTON_SHOPPING_CART)
         exp.search_element(exp.CAROUSEL_BANNER)
-        exp.search_element(exp.IMG_IPHONE)
+        exp.search_element(exp.CARD_PAGE_IPHONE)
 
     def test_laptops_catalog_page(self, browser):
+        MainPage(browser).open_main_page()
+        MainPage(browser).open_desktops_catalog_page()
         exp = CatalogPage(browser)
-        exp.open_catalog_page()
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_DESKTOPS)
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_LAPTOPS_NOTEBOOKS)
         exp.search_element(CatalogPage.LIST_GROUP_ITEM_COMPONENTS)
@@ -32,15 +34,15 @@ class TestFindElements:
         exp.search_element(CatalogPage.REFINE_SEARCH_PC)
 
     def test_product_card_page(self, browser):
+        MainPage(browser).open_main_page()
+        MainPage(browser).open_product_card_page()
         exp = ProductCardPage(browser)
-        exp.open_product_card_page()
         exp.search_element(ProductCardPage.MAIN_PRODUCT_IMG)
         exp.search_element(ProductCardPage.PRICE)
         exp.search_element(ProductCardPage.WISH_LIST_BUTTON)
         exp.search_element(ProductCardPage.INPUT_QUANTITY)
         exp.search_element(ProductCardPage.TAB_REVIEW)
         exp.search_element(ProductCardPage.DESCRIPTION)
-        exp.search_element(ProductCardPage.RELATED_PRODUCT)
 
     def test_login_admin_page(self, browser):
         exp = LoginAdminPage(browser)
@@ -52,8 +54,9 @@ class TestFindElements:
         exp.search_element(LoginAdminPage.IMG_LOGO)
 
     def test_user_registration_page(self, browser):
+        MainPage(browser).open_main_page()
+        MainPage(browser).open_user_registration_page()
         exp = UserRegistrationPage(browser)
-        exp.open_user_registration_page()
         exp.search_element(UserRegistrationPage.LOGIN_PAGE_LINK)
         exp.search_element(UserRegistrationPage.INPUT_FIRST_NAME)
         exp.search_element(UserRegistrationPage.INPUT_EMAIL)

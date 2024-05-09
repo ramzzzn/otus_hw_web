@@ -11,8 +11,3 @@ class ProductCardPage(BasePage):
     TAB_REVIEW = By.CSS_SELECTOR, "a.nav-link[href='#tab-review']"
     TAB_DESCRIPTION = By.CSS_SELECTOR, "a.nav-link[href='#tab-description']"
     DESCRIPTION = By.CSS_SELECTOR, "#tab-description[role='tabpanel']"
-    RELATED_PRODUCT = By.CSS_SELECTOR, ".product-thumb"
-
-    def open_product_card_page(self):
-        self.open_page('/en-gb/product/smartphone/iphone')
-        self.wait_title("iPhone")

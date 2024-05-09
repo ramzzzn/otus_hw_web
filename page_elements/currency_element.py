@@ -1,3 +1,4 @@
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -21,11 +22,14 @@ class CurrencyElement:
         except TimeoutException:
             raise AssertionError(f"Не найден ни один элемент по указанному селектору: {currency_locator}")
 
+    @allure.step("Выполняю смену валюты на USD")
     def switch_currency_to_usd(self):
         self._select_currency(self.CURRENCY_USD)
 
+    @allure.step("Выполняю смену валюты на EUR")
     def switch_currency_to_eur(self):
         self._select_currency(self.CURRENCY_EUR)
 
+    @allure.step("Выполняю смену валюты на GBP")
     def switch_currency_to_gbp(self):
         self._select_currency(self.CURRENCY_GBP)
